@@ -1,0 +1,40 @@
+.row
+  .col-xs-3
+    %h1 User details
+    %table.table.table-bordered
+      %tr
+        %th.col-md-5 First Name:
+        %td.text-left=@user.first_name
+      %tr
+        %th Last Name:
+        %td=@user.last_name
+  .col-md-8
+    .row
+      .col-xs-6
+        %h1 Debit cards
+        =form_for(@debit_card) do |f|
+          .panel.panel-default
+            .panel-heading
+              New debit card
+            .panel-body
+              %table.table
+                %tr
+                  %th Card number
+                  %td
+                    = f.text_field :card_number, maxlength: 16, size: 20, placeholder: "1234567890123456"
+                %tr
+                  %th Expiration month
+                  %td
+                    = f.text_field :expiration_month, maxlength: 2, size: 20, placeholder: "02"
+                %tr
+                  %th Expiration year
+                  %td
+                    = f.text_field :expiration_year, maxlength: 4, size: 20, placeholder: "2020"
+                %tr
+                  %th CVV
+                  %td
+                    = f.text_field :cvv, maxlength: 3, size: 20, placeholder: "123"
+              %tr
+                %th
+                %td
+                  = f.submit 'Save card', :class => 'btn btn-primary btn-sm'

@@ -1,0 +1,10 @@
+%h1 User details
+%table.table.table-bordered
+  %tr
+    %th.col-md-5 First Name:
+    %td.text-left=@user.first_name
+  %tr
+    %th Last Name:
+    %td=@user.last_name
+
+=link_to "Edit user", edit_user_path(@user.permalink), :class => 'btn btn-primary btn-sm'

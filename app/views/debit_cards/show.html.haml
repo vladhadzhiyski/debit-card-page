@@ -1,0 +1,24 @@
+.row
+  .col-xs-3
+    = render "users/user_details"
+  .col-md-8
+    .row
+      .col-xs-7
+        %h1 Debit cards
+        .panel.panel-default
+          .panel-heading
+            Debit card on file
+          .panel-body
+            %table.table
+              %tr
+                %th Card number
+                %td
+                  =format_card_number(@debit_card.last_four)
+              %tr
+                %th Expiration
+                %td
+                  =format_card_expiration_date(@debit_card.expiration_month, @debit_card.expiration_year)
+            =link_to "Update debit card", edit_debit_card_path(@user.permalink, @debit_card.id), :class => 'btn btn-primary btn-sm'
+            =link_to "Submit payment!", make_payment_debit_card_path(@user.permalink, @debit_card.id), :method => "post", :class => 'btn btn-warning btn-sm'
+
+        =link_to "View user's debit cards", debit_cards_path(@user.permalink), :class => 'btn btn-default btn-sm'

@@ -1,0 +1,18 @@
+.row
+  .col-md-4
+    .panel.panel-default
+      .panel-heading
+        Registered users
+      .panel-body
+        %table.table.table-hover
+          %tr
+            %th First name
+            %th Last name
+          - @users.each do |user|
+            %tr
+              %td
+                =link_to user.first_name, user_path(user.permalink), :class => 'blue'
+              %td
+                =user.last_name
+
+    =link_to "Register new user", new_user_path, :class => 'btn btn-primary btn-sm'

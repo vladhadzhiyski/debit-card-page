@@ -1,0 +1,21 @@
+.row
+  .col-xs-3
+    = render "user_details"
+  .col-xs-4
+    %h1 Debit cards
+    - if @user.debit_cards.present?
+      %table.table.table-striped
+        %tr
+          %th Card number
+          %th Expiration
+        - @user.debit_cards.each do |card|
+          %tr
+            %td
+              =link_to format_card_number(card.last_four), debit_card_path(@user.permalink, card)
+            %td
+              =format_card_expiration_date(card.expiration_month, card.expiration_year)
+    - else
+      %p.text-info
+        The user does not have any debit cards on file
+    =link_to "Add new card", new_debit_card_path(@user.permalink), :class => 'btn btn-primary btn-sm'
+

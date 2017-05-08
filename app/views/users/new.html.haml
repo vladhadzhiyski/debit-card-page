@@ -1,0 +1,20 @@
+.row
+  .col-xs-4
+    =form_for(@user) do |f|
+      .panel.panel-default
+        .panel-heading
+          New user registration
+        .panel-body
+          %table.table
+            %tr
+              %th First name
+              %td
+                = f.text_field :first_name
+            %tr
+              %th Last name
+              %td
+                = f.text_field :last_name
+          %tr
+            %th
+            %td
+              = f.submit 'Register', :class => 'btn btn-primary btn-sm'

@@ -1,0 +1,9 @@
+- if flash.present?
+  .growl.growl-static
+    - flash.each do |type, message|
+      .alert.alert-dismissable{:role => "alert", :class => get_flash_class(type), :style => "width: 585px"}
+        %button.close{"aria-label" => "Close", "data-dismiss" => "alert", :type => "button"}
+          %span{"aria-hidden" => "true"} ×
+        %strong
+          = "#{type.to_s.titleize}: "
+        = message
